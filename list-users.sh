@@ -1,5 +1,6 @@
 #!/bin/bash
 
+helper
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -37,13 +38,14 @@ function list_users_with_read_access {
 }
 
 #helper function
+function helper{
 Excpected_commadline_args = 2
 if $# -ne Excpected_commadline_args; then
 echo "please excetute scrpit with proper commandline args "
 echo " first cmd_args - REPO_OWNER"
 echo " second cmd_args - REPO_NAME"
 fi
-
+}
 # Main script
 
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
