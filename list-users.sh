@@ -1,6 +1,19 @@
 #!/bin/bash
 
-helper
+# Function to validate the number of command-line arguments
+function helper {
+    local expected_commandline_args=2
+    if [[ $# -ne $expected_commandline_args ]]; then
+        echo "Please execute the script with proper command-line arguments."
+        echo "First argument: REPO_OWNER"
+        echo "Second argument: REPO_NAME"
+        exit 1
+    fi
+}
+
+# Validate the number of command-line arguments
+helper "$@"
+
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -37,16 +50,6 @@ function list_users_with_read_access {
     fi
 }
 
-#helper function
-function helper{
-Excpected_commadline_args = 2
-if $# -ne Excpected_commadline_args; then
-echo "please excetute scrpit with proper commandline args "
-echo " first cmd_args - REPO_OWNER"
-echo " second cmd_args - REPO_NAME"
-fi
-}
 # Main script
-
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
